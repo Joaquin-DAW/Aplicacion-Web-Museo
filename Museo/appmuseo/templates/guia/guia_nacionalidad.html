@@ -1,0 +1,17 @@
+{% extends 'principal.html' %}
+{% block cabecera %}
+  <h1>Guias que hablen {{ idioma1 }} o {{ idioma2 }}</h1>
+{% endblock %}
+{% block contenido %}
+  {% if guias %}
+    <h2>Se encontraron {{ guias|length }} guias que hablen {{ idioma1 }} o {{ idioma2 }}.</h2><br /> <!-- Calculamos el total de guias que encontramos que 
+                                                                                                      hablen esos dos idiomas-->
+  {% else %}
+    <h2>No hay guias que hablen {{ idioma1 }} o {{ idioma2 }}.</h2><br />
+  {% endif %}
+  {% for guia in guias %}
+    {% include 'guia/_guia.html' %}
+  {% empty %}
+    <h2>No hay guias disponibles en este momento.</h2>
+  {% endfor %}
+{% endblock %}

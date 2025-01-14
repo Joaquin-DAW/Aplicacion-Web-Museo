@@ -1,0 +1,16 @@
+{% extends 'principal.html' %}
+{% block cabecera %}
+  <h1>Obras del artista {{ artista }} en la exposición: {{ exposicion }}</h1>
+{% endblock %}
+{% block contenido %}
+  {% if obras|length >= 2 %} <!-- Calculamos el número de obras de dicho artista, también hacemos una comparación para ver si es mayor o igual a 2-->
+    <h2>Hay dos o más obras expuestas.</h2><br />
+  {% else %}
+    <h2>Hay menos de dos obras expuestas.</h2><br />
+  {% endif %}
+  {% for obra in obras %}
+    {% include 'obra/_obra.html' %}
+  {% empty %}
+    <h2>No hay obras disponibles en este momento.</h2>
+  {% endfor %}
+{% endblock %}

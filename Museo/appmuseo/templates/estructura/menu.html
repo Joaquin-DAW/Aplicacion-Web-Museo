@@ -1,0 +1,74 @@
+<nav>
+    <ul class="menu">
+        <!--
+        <li><a href="{% url 'exposiciones_por_anyo' 2023 %}">Exposiciones del año 2023</a></li>
+        <li>
+            <a href="{% url 'obras_por_artista_exposicion' 'Leonardo da Vinci' 'Renacimiento Italiano' %}">
+                Obras de Leonardo da Vinci en Renacimiento Italiano
+            </a>
+        </li>
+        <li><a href="{% url 'visitantes_edad' 30 %}">Visitantes con edad superior a 30</a></li>
+        <li>
+            <a href="{% url 'artistas_nacionalidad' 'espanola' %}">
+                Artistas españoles por fecha de nacimiento descendente
+            </a>
+        </li>
+        <li>
+            <a href="{% url 'guias_idiomas' 'francés' 'inglés' %}">
+                Guías que hablan francés o inglés
+            </a>
+        </li>
+        <li><a href="{% url 'media_precio' %}">Media del precio de productos de la tienda</a></li>
+        <li><a href="{% url 'primer_visitante_2023' %}">Primera persona que visitó el museo en 2023</a></li>
+        <li><a href="{% url 'productos_sin_vender' %}">Productos sin vender</a></li>
+        <li><a href="{% url 'visitantes_menor_media' %}">Visitantes con menos edad que la media</a></li>-->
+        <p>
+            Fecha Inicio:
+            </br>
+            {{ request.session.fecha_inicio}}
+        </p>
+        {% if request.user.is_authenticated %}
+        <p>
+            Nombre Usuario: {{ request.user }}
+        </p>
+        {% endif %}
+        <li><a href="{% url 'listar_museos' %}">Listado de Museos</a></li>
+        <li><a href="{% url 'museo_create' %}">Crear Museo</a></li>
+        <li><a href="{% url 'museo_buscar_avanzado' %}">Busqueda avanzada Museo</a></li>
+
+        <li><a href="{% url 'listar_exposiciones' %}">Listado de Exposiciones</a></li>
+        <li><a href="{% url 'exposicion_create' %}">Crear Exposición</a></li>
+        <li><a href="{% url 'exposicion_buscar_avanzado' %}">Busqueda avanzada Exposición</a></li>
+        
+        <li><a href="{% url 'listar_artistas' %}">Listado de Artistas</a></li>
+        <li><a href="{% url 'artista_create' %}">Crear Artista</a></li>
+        <li><a href="{% url 'artista_buscar_avanzado' %}">Busqueda avanzada Artista</a></li>
+
+        <li><a href="{% url 'listar_obras' %}">Listado de Obras</a></li>
+        <li><a href="{% url 'obra_create' %}">Crear Obra</a></li>
+
+          <a class="btn btn-outline-warning" href="{% url 'registrar_usuario' %}">
+              Registrarse
+          </a>
+          <div class="ml-2">
+            {% if not request.user.is_authenticated %}
+            <a class="btn btn-outline-warning" href="{% url 'login' %}">
+                Login
+            </a>
+            {% endif %}
+    
+            {% if not request.user.is_authenticated %}
+              <a class="btn btn-outline-warning" href="{% url 'registrar_usuario' %}">
+                  Registrarse
+              </a>
+             {% endif %}
+    
+             {% if request.user.is_authenticated %}
+             <form action="{% url 'logout' %}" class="d-flex m-3" role="search" method="POST">
+              {% csrf_token %} 
+              <button class="btn btn-light btn-outline-dark" type="submit">  Desconectarse</button>
+            </form>
+            {% endif %}
+        </div>
+    </ul>
+</nav>

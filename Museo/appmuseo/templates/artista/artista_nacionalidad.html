@@ -1,0 +1,16 @@
+{% extends 'principal.html' %}
+{% block cabecera %}
+  <h1>Artistas con nacionalidad Española</h1>
+{% endblock %}
+{% block contenido %}
+  {% if artistas %}
+    <h2>Se encontraron {{ artistas|length }} artistas españoles.</h2><br /> <!-- Calculamos la longitud del valor artistas para saber cuantos nos devuelve-->
+  {% else %}
+    <h2>No hay artistas con esa nacionalidad.</h2><br />
+  {% endif %}
+  {% for artista in artistas %}
+    {% include 'artista/_artista.html' %}
+  {% empty %}
+    <h2>No hay artistas disponibles en este momento.</h2>
+  {% endfor %}
+{% endblock %}

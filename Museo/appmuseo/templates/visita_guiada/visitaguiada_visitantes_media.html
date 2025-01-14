@@ -1,0 +1,8 @@
+{% extends 'principal.html' %}
+{% block contenido %}
+  {% for visita_guiada in visitas_guiadas %}
+    {% include 'visita_guiada/_visita.html' %}
+  {% empty %}
+    <h2>No hay visitas guiadas disponibles en este momento.</h2>
+  {% endfor %}
+{% endblock %}

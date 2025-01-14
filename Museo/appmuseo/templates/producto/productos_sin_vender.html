@@ -1,0 +1,11 @@
+{% extends 'principal.html' %}
+{% block cabecera %}
+  <h1>Productos sin vender</h1>
+{% endblock %}
+{% block contenido %}
+  {% for producto in productos %}
+    {% include 'producto/_producto.html' %}
+  {% empty %}
+    <h2>No hay productos disponibles en este momento.</h2>
+  {% endfor %}
+{% endblock %}

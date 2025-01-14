@@ -1,0 +1,12 @@
+{% extends 'principal.html' %}
+{% block cabecera %}
+  <h1>Media del precio de productos es: {{ media|floatformat:2 }}</h1> <!-- Redondeamos la cantidad de decimales que nos devuelve la media a 2-->
+{% endblock %}
+{% block contenido %}
+  <h2>Lista de Productos:</h2>
+  {% for producto in productos %}
+    {% include 'producto/_producto.html' %}
+  {% empty %}
+    <h2>No hay productos disponibles en este momento.</h2>
+  {% endfor %}
+{% endblock %}

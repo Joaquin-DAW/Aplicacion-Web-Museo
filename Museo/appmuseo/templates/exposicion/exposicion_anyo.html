@@ -1,0 +1,16 @@
+{% extends 'principal.html' %}
+{% block cabecera %}
+  <h1>Exposiciones del año {{ year }}</h1>
+{% endblock %}
+{% block contenido %}
+  {% if exposiciones %}
+    <h2>Se encontraron {{ exposiciones|length }} exposiciones del año 2023.</h2><br /> <!-- Calculamos la cantidad de exposiciones que hay en el año 2023-->
+  {% else %}
+    <h2>No hay artistas con esa nacionalidad.</h2><br />
+  {% endif %}
+  {% for exposicion in exposiciones %}
+    {% include 'exposicion/_exposicion.html' %}
+  {% empty %}
+    <h2>No hay exposiciones disponibles en este momento.</h2>
+  {% endfor %}
+{% endblock %}

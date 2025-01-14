@@ -1,0 +1,11 @@
+{% extends 'principal.html' %}
+{% block cabecera %}
+  <h1>Visitantes con edad menor que la media ({{ edad_media|floatformat:0 }})</h1>
+{% endblock %}
+{% block contenido %}
+  {% for visitante in visitantes %}
+    {% include 'visitante/_visitante.html' %}
+  {% empty %}
+    <h2>No hay visitantes disponibles en este momento.</h2>
+  {% endfor %}
+{% endblock %}

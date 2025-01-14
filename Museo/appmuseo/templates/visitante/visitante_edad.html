@@ -1,0 +1,14 @@
+{% extends 'principal.html' %}
+{% block cabecera %}
+  <h1>Visitantes con una edad superior a {{ edad }} años</h1>
+{% endblock %}
+{% block contenido %}
+  {% for visitante in visitantes %}
+    {% if visitante.fecha_visita >= temp_alta1 and visitante.fecha_visita < temp_alta2 %}
+        <p>Visito el museo en temporada alta.
+    {% endif %}
+    {% include 'visitante/_visitante.html' %}
+  {% empty %}
+    <h2>No hay visitantes disponibles en este momento.</h2>
+  {% endfor %}
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'principal.html' %}
+{% block cabecera %}
+  <h1>Primer Visitante de 2023</h1>
+{% endblock %}
+{% block contenido %}
+  {% for visitante in visitantes %}
+    {% if not visitante.edad >= 18 %}
+      <p>{{ visitante.nombre }} es menor de edad.</p>
+    {% else %}
+      <p>{{ visitante.nombre }} es mayor de edad.</p><br />
+    {% endif %}
+    {% include 'visitante/_visitante.html' %}
+  {% empty %}
+    <h2>No hay visitantes disponibles en este momento.</h2>
+  {% endfor %}
+{% endblock %}
